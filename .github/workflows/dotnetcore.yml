@@ -19,5 +19,5 @@ jobs:
     - name: Setup MSBuild.exe
       uses: warrenbuckley/Setup-MSBuild@v1
     - name: Build with MSBuild
-      run: msbuild SeleniumNUnitParam.sln /t:build /p:Configuration=Release /p:Platform="Any CPU" /m:4 /p:BuildInParallel=false
+      run: msbuild SeleniumNUnitParam.sln /t:build /p:Configuration=Release /p:Platform="Any CPU" /m:4
     
