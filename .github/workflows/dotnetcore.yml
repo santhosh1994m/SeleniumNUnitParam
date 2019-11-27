@@ -19,4 +19,4 @@ jobs:
     - name: Setup MSBuild.exe
       uses: warrenbuckley/Setup-MSBuild@v1  
     - name: Build with MSBuild
-      run: msbuild SeleniumNUnitParam.sln --Configuration Release
+      run: msbuild SeleniumNUnitParam.sln --configuration Release
