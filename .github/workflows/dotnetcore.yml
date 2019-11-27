@@ -1,18 +1,18 @@
-name: .NET Core
+name: NetFrameWork.Legacy.CI
 
 on: [push]
-
+ 
 jobs:
   build:
-
     runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v1
-    - name: Setup .NET Framework
-      uses: actions/setup-dotnetframework@v1
-      with:
-        dotnet-version: 3.0.100
-    - name: Restore with dotnet
-      run: restore SeleniumNUnitParam.sln
-    
+    - name: Setup Nuget.exe
+      uses: warrenbuckley/Setup-Nuget@v1
+    - name: Restore packages
+      run: nuget restore YOUR_SOLUTION_NAME
+    - name: Setup MSBuild.exe
+      uses: warrenbuckley/Setup-MSBuild@v1
+    - name: Build with MSBuild
+      run: msbuild  SeleniumNUnitParam.sln -p:Configuration=Release
