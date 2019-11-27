@@ -20,3 +20,8 @@ jobs:
       uses: warrenbuckley/Setup-MSBuild@v1
     - name: Build with MSBuild
       run: msbuild SeleniumNUnitParam.sln /t:build /p:Configuration=Release /p:Platform="Any CPU"
+    - name: Setup Nuget.exe
+      uses: warrenbuckley/Setup-Nuget@v1
+    - name: install packages  
+      run: nuget install SeleniumNUnitParam/packages.config
+    
