@@ -12,12 +12,12 @@ jobs:
     steps:
     - name: Checkout Repo 
       uses: actions/checkout@v1 
+    - name: Setup Nuget.exe
+      uses: warrenbuckley/Setup-Nuget@v1
+    - name: setup nuget 
+      run : nuget restore SeleniumNUnitParam.sln
     - name: Setup MSBuild.exe
       uses: warrenbuckley/Setup-MSBuild@v1
     - name: Build with MSBuild
-      run: msbuild SeleniumNUnitParam.sln /t:build /p:Configuration=Release /p:Platform="Any CPU"
-    - name: Setup Nuget.exe
-      uses: warrenbuckley/Setup-Nuget@v1
-    - name: install packages  
-      run: nuget install SeleniumNUnitParam/packages.config
+      run: msbuild SeleniumNUnitParam.sln /t:build /p:Configuration=Release /p:Platform="Any CPU" /m:4 /p:BuildInParallel=false
     
