@@ -14,5 +14,5 @@ jobs:
       with:
         dotnet-version: 3.0.100
     - name: Restore with dotnet
-      run: msbuild build --configurations Release
+      run: .\build SeleniumNUnitParam.sln
     
