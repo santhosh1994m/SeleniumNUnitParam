@@ -17,9 +17,6 @@ jobs:
     - name: Restore projects
       run: nuget restore SeleniumNUnitParam.sln
     - name: Setup MSBuild.exe
-      uses: warrenbuckley/Setup-MSBuild@v1
-    - name: list of files available 
-      run: | 
-       pwd && ls -ltr  
+      uses: warrenbuckley/Setup-MSBuild@v1  
     - name: Build with MSBuild
-      run: msbuild  SeleniumNUnitParam.sln --Configuration=Release
+      run: msbuild  SeleniumNUnitParam.sln /p:Configuration=Release /p:Platform="Any CPU"
