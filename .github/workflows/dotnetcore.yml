@@ -13,10 +13,16 @@ jobs:
     - name: Checkout Repo 
       uses: actions/checkout@v1
     - name: Setup Nuget.exe
-      uses: warrenbuckley/Setup-Nuget@v1
+      run: | 
+       pwd && ls -ltr
+    - name: download the nuget  
+      uses: warrenbuckley/Setup-Nuget@v1  
     - name: Restore projects
       run: nuget restore SeleniumNUnitParam.sln
     - name: Setup MSBuild.exe
       uses: warrenbuckley/Setup-MSBuild@v1
+    - name: list of files available 
+      run: | 
+       pwd && ls -ltr  
     - name: Build with MSBuild
       run: msbuild  SeleniumNUnitParam.sln --Configuration=Release
