@@ -13,9 +13,6 @@ jobs:
     - name: Checkout Repo 
       uses: actions/checkout@v1
     - name: Setup Nuget.exe
-      run: | 
-       pwd && ls -ltr
-    - name: download the nuget  
       uses: warrenbuckley/Setup-Nuget@v1  
     - name: Restore projects
       run: nuget restore SeleniumNUnitParam.sln
