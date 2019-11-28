@@ -19,5 +19,5 @@ jobs:
     - name: setup nuget 
       run : nuget restore SeleniumNUnitParam.sln
     - name: Build with MSBuild
-      run: msbuild SeleniumNUnitParam.sln -p:Configuration=Release -m=4
+      run: msbuild SeleniumNUnitParam.sln -p:Configuration=Release
     
