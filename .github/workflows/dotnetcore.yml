@@ -18,6 +18,7 @@ jobs:
       run : nuget restore SeleniumNUnitParam.sln
     - name: Setup MSBuild.exe
       uses: warrenbuckley/Setup-MSBuild@v1
-    - name: Build with MSBuild
-      run: msbuild SeleniumNUnitParam.sln /t:build /p:Configuration=Release /p:Platform="Any CPU" /m:4
+    - name: MSBuild
+      working-directory: SeleniumNUnitParam
+      run: msbuild SeleniumNUnitParam.csproj
     
