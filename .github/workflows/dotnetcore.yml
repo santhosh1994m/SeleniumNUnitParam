@@ -18,6 +18,12 @@ jobs:
       uses: warrenbuckley/Setup-MSBuild@v1
     - name: setup nuget 
       run : nuget restore SeleniumNUnitParam.sln
-    - name: Build with MSBuild
-      run: msbuild SeleniumNUnitParam.sln -p:Configuration=Release
-    
+    - name: copy file via ssh password
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        source: "SeleniumNUnitParam"
+        target: "test"
