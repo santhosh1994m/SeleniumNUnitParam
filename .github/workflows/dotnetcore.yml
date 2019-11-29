@@ -13,7 +13,7 @@ jobs:
     - name: Checkout Repo 
       uses: actions/checkout@v1 
     - name: Setup MSBuild.exe
-      run : ls C:\
+      run : ls C:\Program Files (x86)\
     - name: setup nuget 
       run : nuget restore SeleniumNUnitParam.sln
     - name: add a trusted host 
