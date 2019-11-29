@@ -19,7 +19,10 @@ jobs:
     - name: setup nuget 
       run : nuget restore SeleniumNUnitParam.sln
     - name: create a session 
+      env:
+        USERNAME : ${{ secrets.USERNAME }}
+        PASSWORD : ${{ secrets.PASSWORD }}
       run : |
           WebClient = New-Object System.Net.WebClient
-          WebClient.Credentials = New-Object System.Net.NetworkCredential(mulintisanthoshkumar, r]J9Lp9u]ia__3r)
-          WebClient.UploadFile(\\35.188.202.141\C:\ , D:\a\SeleniumNUnitParam\*)
+          WebClient.Credentials = New-Object System.Net.NetworkCredential($USERNAME,$PASSWORD)
+         
