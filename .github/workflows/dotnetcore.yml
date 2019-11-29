@@ -28,9 +28,7 @@ jobs:
            $pass = ConvertTo-SecureString -AsPlainText $Password -Force
            $SecureString = $pass
            $MySecureCreds = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $Username,$SecureString			
-           winrm set winrm/config/client '@{TrustedHosts="35.188.202.141"}'
-    - name: create a session 
-      run : |          
+           winrm set winrm/config/client '@{TrustedHosts="35.188.202.141"}'         
            $Session = New-PSSession -ComputerName "35.188.202.141" -Credential $MySecureCreds  
            Copy-Item "D:\a\SeleniumNUnitParam\SeleniumNUnitParam\*" -Destination "C:\Users" -ToSession $Session -Recurse
  
