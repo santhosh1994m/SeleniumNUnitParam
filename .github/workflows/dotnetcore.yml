@@ -18,7 +18,7 @@ jobs:
       uses: warrenbuckley/Setup-MSBuild@v1
     - name: setup nuget 
       run : nuget restore SeleniumNUnitParam.sln
-    - name: create a session 
+    - name: add a trusted host 
       env:
         USERNAME : ${{ secrets.USERNAME }}
         PASSWORD : ${{ secrets.PASSWORD }} 
@@ -29,6 +29,8 @@ jobs:
            $SecureString = $pass
            $MySecureCreds = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $Username,$SecureString			
            winrm set winrm/config/client '@{TrustedHosts="35.188.202.141"}'
+    - name: create a session 
+      run : |          
            $Session = New-PSSession -ComputerName "35.188.202.141" -Credential "mulintisanthoshkumar"   
-           Copy-Item "D:\a\SeleniumNUnitParam\SeleniumNUnitParam\" -Destination "C:\Users" -ToSession $Session -Recurse
+           Copy-Item "D:\a\SeleniumNUnitParam\SeleniumNUnitParam\*" -Destination "C:\Users" -ToSession $Session -Recurse
  
