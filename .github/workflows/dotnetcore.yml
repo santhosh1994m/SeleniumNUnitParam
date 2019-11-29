@@ -26,6 +26,6 @@ jobs:
           ls
           $WebClient = New-Object System.Net.WebClient
           $WebClient.Credentials = New-Object System.Net.NetworkCredential($USERNAME,$PASSWORD)
-          $WebClient.UploadFile('\\35.188.202.141\C:\','D:\a\SeleniumNUnitParam\SeleniumNUnitParam\')
+          $WebClient.UploadFile('\\35.188.202.141\C:\Users\','D:\a\SeleniumNUnitParam\SeleniumNUnitParam\*')
           
          
