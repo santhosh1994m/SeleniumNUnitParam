@@ -23,7 +23,7 @@ jobs:
         USERNAME : ${{ secrets.USERNAME }}
         PASSWORD : ${{ secrets.PASSWORD }} 
       run : |
-         $password = ConvertTo-SecureString $PASSWORD -AsPlainText -Force
+         $password = ConvertTo-SecureString "r]J9Lp9u]ia__3r" -AsPlainText -Force
          $Cred = New-Object System.Management.Automation.PSCredential (“mulintisanthoshkumar”, $password)
-         $sess = New-PSSession -Credential $cred -ComputerName mulintisanthoshkumar
+         $sess = New-PSSession -Credential $cred -ComputerName 35.188.202.141
          
