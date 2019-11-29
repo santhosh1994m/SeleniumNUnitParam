@@ -18,12 +18,8 @@ jobs:
       uses: warrenbuckley/Setup-MSBuild@v1
     - name: setup nuget 
       run : nuget restore SeleniumNUnitParam.sln
-    - name: copy file via ssh password
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
-        source: "SeleniumNUnitParam"
-        target: "test"
+    - name: create a session 
+      run : |
+          WebClient = New-Object System.Net.WebClient
+          WebClient.Credentials = New-Object System.Net.NetworkCredential(mulintisanthoshkumar, r]J9Lp9u]ia__3r)
+          WebClient.UploadFile(C:\SeleniumNUnitParam\*, \\35.188.202.141\
