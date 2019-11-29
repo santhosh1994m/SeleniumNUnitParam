@@ -22,11 +22,11 @@ jobs:
       env:
         USERNAME : ${{ secrets.USERNAME }}
         PASSWORD : ${{ secrets.PASSWORD }}
-        Source : D:\a\SeleniumNUnitParam\*
-        Dest : \\35.188.202.141\C:\
+        Source : "D:\a\SeleniumNUnitParam\SeleniumNUnitParam\"
+        Dest : "\\35.188.202.141\C:\"
       run : |
           $WebClient = New-Object System.Net.WebClient
           $WebClient.Credentials = New-Object System.Net.NetworkCredential($USERNAME,$PASSWORD)
-          $WebClient.UploadFile($Dest, $Source)
+          $WebClient.UploadFile($Dest,$Source)
           ls
          
