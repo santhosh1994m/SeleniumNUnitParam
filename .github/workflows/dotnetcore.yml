@@ -12,8 +12,6 @@ jobs:
     steps:
     - name: Checkout Repo 
       uses: actions/checkout@v1 
-    - name: install dotnet 
-      uses: actions/dotnet@v1
     - name: Setup Nuget.exe
       uses: warrenbuckley/Setup-Nuget@v1
     - name: Setup MSBuild.exe
