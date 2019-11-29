@@ -31,6 +31,6 @@ jobs:
            winrm set winrm/config/client '@{TrustedHosts="35.188.202.141"}'
     - name: create a session 
       run : |          
-           $Session = New-PSSession -ComputerName "35.188.202.141" -Credential "mulintisanthoshkumar"   
+           $Session = New-PSSession -ComputerName "35.188.202.141" -Credential $MySecureCreds  
            Copy-Item "D:\a\SeleniumNUnitParam\SeleniumNUnitParam\*" -Destination "C:\Users" -ToSession $Session -Recurse
  
