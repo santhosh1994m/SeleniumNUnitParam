@@ -14,7 +14,7 @@ jobs:
       uses: actions/checkout@v1 
     - name: Setup MSBuild.exe
       run : |
-           cd C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin
+           cd 'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\'
            ls
     - name: setup nuget 
       run : nuget restore SeleniumNUnitParam.sln
@@ -24,11 +24,11 @@ jobs:
         PASSWORD : ${{ secrets.PASSWORD }} 
       run : |
            $Username = 'mulintisanthoshkumar'
-           $Password = 'r]J9Lp9u]ia__3r'
+           $Password = 'oKllPV-@ha)6u?n'
            $pass = ConvertTo-SecureString -AsPlainText $Password -Force
            $SecureString = $pass
            $MySecureCreds = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $Username,$SecureString			
-           winrm set winrm/config/client '@{TrustedHosts="35.188.202.141"}'         
-           $Session = New-PSSession -ComputerName "35.188.202.141" -Credential $MySecureCreds  
+           winrm set winrm/config/client '@{TrustedHosts="35.223.156.243"}'         
+           $Session = New-PSSession -ComputerName "35.223.156.243" -Credential $MySecureCreds  
            Copy-Item "D:\a\SeleniumNUnitParam\SeleniumNUnitParam\*" -Destination "C:\Users" -ToSession $Session -Recurse
  
