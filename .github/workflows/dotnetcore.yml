@@ -11,5 +11,5 @@ jobs:
 
     steps:
     - name: Checkout Repo 
-      run : ping 35.223.156.243
+      run : Import-Module PSFTP
          
