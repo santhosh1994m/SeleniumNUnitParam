@@ -11,23 +11,5 @@ jobs:
 
     steps:
     - name: Checkout Repo 
-      uses: actions/checkout@v1 
-    - name: Setup MSBuild.exe
-      run : |
-              ls 'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\'
-    - name: setup nuget 
-      run : nuget restore SeleniumNUnitParam.sln
-    - name: add a trusted host 
-      env:
-        USERNAME : ${{ secrets.USERNAME }}
-        PASSWORD : ${{ secrets.PASSWORD }} 
-      run : |
-           $Username = 'mulintisanthoshkumar'
-           $Password = 'oKllPV-@ha)6u?n'
-           $pass = ConvertTo-SecureString -AsPlainText $Password -Force
-           $SecureString = $pass
-           $MySecureCreds = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $Username,$SecureString			
-           winrm set winrm/config/client '@{TrustedHosts="35.223.156.243"}'         
-           $Session = New-PSSession -ComputerName "35.223.156.243" -Credential $MySecureCreds  
-           Copy-Item "D:\a\SeleniumNUnitParam\SeleniumNUnitParam\*" -Destination "C:\Users" -ToSession $Session -Recurse
- 
+      run : Get-NetIPAddress
+         
