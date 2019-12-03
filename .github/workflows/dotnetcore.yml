@@ -14,10 +14,7 @@ jobs:
       run : ls  
     - name: Setup MSBuild.exe
       uses: warrenbuckley/Setup-MSBuild@v1
-    - name: MSBuild
-      run: msbuild KbiFastAmp/KbiFastAmp.csproj -p:Configuration=Release
     - name: list out the files 
-      working-directory: KbiFastAmp
       run : ls
     - name: create a AppDir
       run : New-Item -ItemType directory -Path "C:\AppDir"
