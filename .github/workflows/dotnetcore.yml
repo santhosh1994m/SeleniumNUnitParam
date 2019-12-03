@@ -10,11 +10,7 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v1
-    - name: list out the files
-      run : ls  
-    - name: Setup MSBuild.exe
-      uses: warrenbuckley/Setup-MSBuild@v1
-    - name: list out the files 
+    - name: list out the files  
       run : ls
     - name: create a AppDir
       run : New-Item -ItemType directory -Path "C:\AppDir"
@@ -23,8 +19,6 @@ jobs:
          $USERNAME = 'mulintisanthoshkumar'
          $PASSWORD = 'fE(^M7rJZz13+%E'
          Copy-Item -Path "D:\a\SeleniumNUnitParam\SeleniumNUnitParam\*" -Destination C:\AppDir\ -Recurse -Force
-         cd C:\AppDir
-         ls
          $pass = ConvertTo-SecureString -AsPlainText $PASSWORD -Force
          $SecureString = $pass
          $MySecureCreds = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $USERNAME,$SecureString			
