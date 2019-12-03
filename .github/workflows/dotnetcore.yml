@@ -15,7 +15,7 @@ jobs:
     - name: create a AppDir
       run : New-Item -ItemType directory -Path "C:\AppDir"
     - name: add a trusted host and CopyFiles@2 the application server
-      run : |
+      run : | 
            $Username = 'mulintisanthoshkumar'
            $Password = 'fE(^M7rJZz13+%E'
            $pass = ConvertTo-SecureString -AsPlainText $Password -Force
