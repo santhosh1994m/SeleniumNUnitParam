@@ -16,12 +16,11 @@ jobs:
       run : New-Item -ItemType directory -Path "C:\AppDir"
     - name: add a trusted host and CopyFiles@2 the application server
       run : |
-         $USERNAME = 'mulintisanthoshkumar'
-         $PASSWORD = 'fE(^M7rJZz13+%E'
-         Copy-Item -Path "D:\a\SeleniumNUnitParam\SeleniumNUnitParam\*" -Destination C:\AppDir\ -Recurse -Force
-         $pass = ConvertTo-SecureString -AsPlainText $PASSWORD -Force
-         $SecureString = $pass
-         $MySecureCreds = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $USERNAME,$SecureString			
-         winrm set winrm/config/client '@{TrustedHosts="34.67.186.206"}'         
-         $Session = New-PSSession -ComputerName "34.67.186.206" -Credential $MySecureCreds
-         Copy-Item "C:\AppDir\*" -Destination "C:\Santhosh" -ToSession $Session -Recurse
+           $Username = 'mulintisanthoshkumar'
+           $Password = 'fE(^M7rJZz13+%E'
+           $pass = ConvertTo-SecureString -AsPlainText $Password -Force
+           $SecureString = $pass
+           $MySecureCreds = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $Username,$SecureString			
+           winrm set winrm/config/client '@{TrustedHosts="34.67.186.206"}'         
+           $Session = New-PSSession -ComputerName "34.67.186.206" -Credential $MySecureCreds  
+           Copy-Item "D:\a\SeleniumNUnitParam\SeleniumNUnitParam\*" -Destination "C:\Users" -ToSession $Session -Recurse
