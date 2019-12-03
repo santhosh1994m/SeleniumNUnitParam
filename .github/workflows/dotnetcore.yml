@@ -17,10 +17,10 @@ jobs:
     - name: add a trusted host and CopyFiles@2 the application server
       run : |
            $Username = 'mulintisanthoshkumar'
-           $Password = 'fE(^M7rJZz13+%E'
+           $Password = 'oKllPV-@ha)6u?n'
            $pass = ConvertTo-SecureString -AsPlainText $Password -Force
            $SecureString = $pass
            $MySecureCreds = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $Username,$SecureString			
-           winrm set winrm/config/client '@{TrustedHosts="34.67.186.206"}'         
-           $Session = New-PSSession -ComputerName "34.67.186.206" -Credential $MySecureCreds  
+           winrm set winrm/config/client '@{TrustedHosts="35.238.74.183"}'         
+           $Session = New-PSSession -ComputerName "35.238.74.183" -Credential $MySecureCreds  
            Copy-Item "D:\a\SeleniumNUnitParam\SeleniumNUnitParam\*" -Destination "C:\Users" -ToSession $Session -Recurse
