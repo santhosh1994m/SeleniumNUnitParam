@@ -11,5 +11,5 @@ jobs:
 
     steps:
     - name: Checkout Repo 
-      run : FTP
+      run : Get-NetIPAddress
          
