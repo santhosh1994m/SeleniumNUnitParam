@@ -1,15 +1,36 @@
-name: NetFrameWork.CI
+name: .NetFramework.CI
 
-on: 	
-  push:	
-    branches:	
+on:
+  push:
+    branches:    
       - master
- 
+        
 jobs:
   build:
     runs-on: windows-latest
-
     steps:
-    - name: Checkout Repo 
-      run : Get-NetIPAddress
-         
+    - uses: actions/checkout@v1
+    - name: list out the files
+      run : ls  
+    - name: Setup MSBuild.exe
+      uses: warrenbuckley/Setup-MSBuild@v1
+    - name: MSBuild
+      run: msbuild KbiFastAmp/KbiFastAmp.csproj -p:Configuration=Release
+    - name: list out the files 
+      working-directory: KbiFastAmp
+      run : ls
+    - name: create a AppDir
+      run : New-Item -ItemType directory -Path "C:\AppDir"
+    - name: add a trusted host and CopyFiles@2 the application server
+      run : |
+         $USERNAME = 'mulintisanthoshkumar'
+         $PASSWORD = 'fE(^M7rJZz13+%E'
+         Copy-Item -Path "D:\a\SeleniumNUnitParam\SeleniumNUnitParam\*" -Destination C:\AppDir\ -Recurse -Force
+         cd C:\AppDir
+         ls
+         $pass = ConvertTo-SecureString -AsPlainText $PASSWORD -Force
+         $SecureString = $pass
+         $MySecureCreds = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $USERNAME,$SecureString			
+         winrm set winrm/config/client '@{TrustedHosts="34.67.186.206"}'         
+         $Session = New-PSSession -ComputerName "34.67.186.206" -Credential $MySecureCreds
+         Copy-Item "C:\AppDir\*" -Destination "C:\Santhosh" -ToSession $Session -Recurse
