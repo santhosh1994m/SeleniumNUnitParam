@@ -23,4 +23,4 @@ jobs:
            $MySecureCreds = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $Username,$SecureString			
            winrm set winrm/config/client '@{TrustedHosts="35.238.74.183"}'         
            $Session = New-PSSession -ComputerName "35.238.74.183" -Credential $MySecureCreds  
-           Copy-Item "D:\a\SeleniumNUnitParam\SeleniumNUnitParam\*" -Destination "C:\Users" -ToSession $Session -Recurse
+           Copy-Item "D:\a\SeleniumNUnitParam\SeleniumNUnitParam\*" -Destination "C:\" -ToSession $Session -Recurse
