@@ -12,6 +12,10 @@ jobs:
     - uses: actions/checkout@v1
     - name: list out the files  
       run : ls
+    - name: Azure Login
+    - uses: Azure/login@v1
+      with: 
+        creds: ${{ secretes.AZURE_CREDENTIALS }}
     - uses: azure/webapps-deploy@v1
       with:
         creds: ${{ secrets.azureWebAppPublishProfile }}
