@@ -22,4 +22,4 @@ jobs:
     - name: list out the files 
       working-directory: SeleniumNUnitParam
       run : ls
-    - name: create a AppDir
+   
