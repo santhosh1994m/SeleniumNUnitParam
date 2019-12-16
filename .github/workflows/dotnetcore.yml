@@ -3,8 +3,7 @@ name: .NetFramework.CI
 on:
   push:
     branches:    
-      - master
-        
+      - master        
 jobs:
   build:
     runs-on: windows-latest
@@ -16,4 +15,3 @@ jobs:
     - uses: Azure/login@v1
       with: 
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-
