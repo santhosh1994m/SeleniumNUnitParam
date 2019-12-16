@@ -19,4 +19,4 @@ jobs:
     - uses: azure/webapps-deploy@v1
       with: 
         app-name: santhosh321
-        publish-profile: ${{ secrets.azureWebAppPublishProfile }
+        publish-profile: ${{ secrets.azureWebAppPublishProfile }}
