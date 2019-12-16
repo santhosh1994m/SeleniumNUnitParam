@@ -1,15 +1,12 @@
 name: DEPLOYDBTOSQLSERVER
-on:
-  push:
-    branches:    
-      - master       
+on: [push]
+
 jobs:
-  build:
-    runs-on: windows-latest
-    steps:
-     - name: download build artifacts
-       uses: actions/checkout@v1
-     - name: Azure Login
-     - uses: Azure/login@v1
-       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:  
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}    
+    - run: |
+        az webapp list --query "[?state=='Running']"
