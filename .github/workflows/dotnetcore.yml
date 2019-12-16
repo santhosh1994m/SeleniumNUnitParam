@@ -4,12 +4,12 @@ on: [push]
 jobs:
   build-and-deploy:
     runs-on: windows-latest
-    steps:  
-    - name : checout the soruce code 
-    - uses: actions/master@v1
+    steps: 
     - name: log in to azure
     - uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}    
     - run: |
         az webapp list --query "[?state=='Running']"
+    - name : checout the soruce code 
+    - uses: actions/master@v1
