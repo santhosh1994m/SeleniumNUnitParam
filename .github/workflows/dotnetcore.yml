@@ -11,5 +11,4 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}    
     - run: |
         az webapp list --query "[?state=='Running']"
-    - name : checout the soruce code 
-    - uses: actions/master@v1
+
