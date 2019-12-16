@@ -12,6 +12,7 @@ jobs:
     - name: MSBuild
       run: msbuild SeleniumNUnitParam/SeleniumNUnitParam/SeleniumNUnitParam.csproj -p:Configuration=Release
     - name: list out the files 
+      run: ls
     - uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}    
