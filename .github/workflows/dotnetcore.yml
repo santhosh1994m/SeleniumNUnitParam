@@ -1,17 +1,15 @@
-name: .NetFramework.CI
-
+name: DEPLOYDBTOSQLSERVER
 on:
   push:
     branches:    
-      - master      
-          
+      - master       
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
-    - name: checkout the source code
-    - uses: actions/checkout@v1
-    - name: Azure Login
-    - uses: Azure/login@v1
-      with:
-         creds: ${{ secrets.AZURE_CREDENTIALS }}
+     - name: download build artifacts
+       uses: actions/checkout@v1
+     - name: Azure Login
+     - uses: Azure/login@v1
+       with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
