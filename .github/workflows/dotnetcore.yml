@@ -12,8 +12,6 @@ jobs:
     - name: checkout the source code
     - uses: actions/checkout@v1
     - name: Azure Login
-    - uses: azure/webapps-deploy@v1
-      with: 
-       creds: ${{ secrets.AZURE_CREDENTIALS }}
-    - name: do ls
-      run : ls
+      uses: Azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
