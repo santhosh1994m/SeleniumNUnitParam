@@ -1,11 +1,17 @@
 name: APPSERVERDEPLOYMENT
-on: [push]
-
+on: 
+ push:
+   branches: 
+     - 'master'
+     - 'devlope'
 jobs:
   build-and-deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: windows-latest
     steps:
     - name: 'Checkout Github Action' 
+      with:
+        ref: master
       uses: actions/checkout@master
     - name: Setup MSBuild.exe
       uses: warrenbuckley/Setup-MSBuild@v1
@@ -20,3 +26,23 @@ jobs:
       with: 
         app-name: santhosh321
         publish-profile: ${{ secrets.azureWebAppPublishProfile }}
+        
+        
+  build-and-deploy-server:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+    runs-on: self-hosted
+    steps:
+    - name: 'Checkout Github Action' 
+      with:
+        ref: devlope
+      uses: actions/checkout@master
+    - name: update the nuget  
+      run: |
+         cd C:\actions-runner\_work\_tool\nuget\latest\x64
+         nuget restore C:\actions-runner\_work\dotnet-framework-docker\dotnet-framework-docker\samples\aspnetapp\aspnetapp.sln 
+      shell: cmd
+    - name: MSBuild
+      run: |  
+          cd C:\actions-runner\MSBuild\Microsoft\Bin
+          msbuild C:\actions-runner\_work\dotnet-framework-docker\dotnet-framework-docker\samples\aspnetapp\aspnetapp\aspnetapp.csproj /p:Configuration=Release -p:OutDir=c:\santhoshkumaar
+      shell: cmd   
