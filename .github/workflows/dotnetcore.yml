@@ -1,9 +1,11 @@
 name: APPSERVERDEPLOYMENT
 on: 
  push:
-   branches: 
+    branches:
      - 'master'
      - 'devlope'
+    
+  
 jobs:
   build-and-deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
@@ -45,4 +47,16 @@ jobs:
       run: |  
           cd C:\actions-runner\MSBuild\Microsoft\Bin
           msbuild C:\actions-runner\_work\dotnet-framework-docker\dotnet-framework-docker\samples\aspnetapp\aspnetapp\aspnetapp.csproj /p:Configuration=Release -p:OutDir=c:\santhoshkumaar
-      shell: cmd   
+      shell: cmd        
+
+  DEPLOYDBTOSQLSERVER2:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop/'
+    runs-on: self-hosted
+    steps: 
+     - name: download build artifacts
+       uses: actions/checkout@v1
+     - name: update database schema using dacpac deploy action       
+       working-directory: C:\Program Files (x86)\Microsoft Visual Studio\2017\SQL\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\150
+       run: sqlpackage.exe /SourceFile:"C:\actions-runner\_work\DeployDB\DeployDB\ContosoRetailDW_1.dacpac" /Action:Publish /TargetServerName:"35.224.110.251\MYSQLINSTANCE" /TargetDatabaseName:"ContosoRetailDW" /TargetUser:${{ secrets.USERNAME }} /TargetPassword:${{ secrets.PASSWORD }}
+       shell: cmd
+
